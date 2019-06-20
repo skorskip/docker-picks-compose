@@ -30,3 +30,7 @@ docker-compose down
 ```
 
 Node services can be reached at [http://localhost:3000/](http://localhost:3000/)
+
+## Design Choices
+### Using v2.1 Docker-Compose
+Using old version of docker-compose to use the `condition` tag to wait for mysql, reference [medium article](https://medium.com/@niratattri/building-a-node-js-application-and-deploying-through-docker-meet-docker-aa8ae677ea12)
