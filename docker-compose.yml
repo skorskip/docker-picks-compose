@@ -1,0 +1,22 @@
+version: '2.1'
+
+services:
+    mysql:
+        command:
+            --secure-file-priv=/var/lib/mysql-files
+        build: ../mysql-picks-database
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=p1cks4ppDB
+        healthcheck:
+            test: "exit 0"
+        ports:
+            - "3306:3306"
+    
+    node-picks-services:
+        build: ../node-picks-services
+        depends_on:
+            mysql:
+                condition: service_healthy
+        ports:
+            - "3000:3000"
